@@ -7,7 +7,6 @@ public class PlayerLocomotion : MonoBehaviour
 {
     CharacterController characterController;
     public Transform playerContainer, cameraContainer;
-
     public float speed = 6.0f;
     public float jumpSpeed = 10f;
     public float mouseSensitivity = 2f;
@@ -20,7 +19,8 @@ public class PlayerLocomotion : MonoBehaviour
 
     void Start()
     {
-        Cursor.visible = false;
+
+        Cursor.lockState = CursorLockMode.Locked;
         characterController = GetComponent<CharacterController>();
         SetCurrentCamera();
     }
@@ -71,6 +71,8 @@ public class PlayerLocomotion : MonoBehaviour
                 characterController.center = new Vector3(0f, 1f, 0f);
             }
         }
+
+    
 
         moveDirection.y -= gravity * Time.deltaTime;
         characterController.Move(moveDirection * Time.deltaTime);
